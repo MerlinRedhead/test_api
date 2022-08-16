@@ -3,14 +3,17 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
 use App\Http\Controllers\Api\StudentController;
 
 use App\Http\Controllers\Api\CourseController;
 
-use App\Http\Controllers\Api\CurrentCourseController;
-
 use App\Http\Controllers\Api\TeacherController;
+
+use App\Http\Controllers\Api\EnrollmentController;
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,19 +31,23 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::apiResources([
-   'Students'=>StudentController::class,
+    'Students'=>StudentController::class,
 ]);
 
 Route::apiResources([
     'Courses'=>CourseController::class,
 ]);
 
-Route::apiResources([
-    'Currentcourse'=>CurrentCourseController::class,
-]);
+
+
 
 Route::apiResources([
     'Teacher'=>TeacherController::class,
+]);
+
+
+Route::apiResources([
+    'Enrollment'=>EnrollmentController::class,
 ]);
 
 

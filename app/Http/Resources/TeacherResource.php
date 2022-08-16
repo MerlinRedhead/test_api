@@ -14,13 +14,15 @@ class TeacherResource extends JsonResource
      */
     public function toArray($request)
     {
-        return[
+        return [
             'id'=>$this->id,
             'Имя'=>$this->Имя,
             'Телефон'=>$this->Телефон,
-            'course'=>$this->course['Название'],
-            'students'=>$this->course->student,
-
+            'Адрес'=>$this->Адрес,
+            'Зарплата'=>$this->Запрлата,
+            'Курс'=>$this->course['Название'],
+            'Студенты'=>$this->course->student,
         ];
+
     }
 }

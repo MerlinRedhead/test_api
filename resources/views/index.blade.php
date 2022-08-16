@@ -1,7 +1,3 @@
-<?php use App\Models\Student
-$student = Student::all();
-?>
-
 <!doctype html>
 <html lang="ru">
 <head>
@@ -9,21 +5,15 @@ $student = Student::all();
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-
+    <title>Test_api</title>
+    <link rel="stylesheet" href="{{mix('css/app.css')}}">
 </head>
 <body>
+ <div id="app">
+     <app></app>
+ </div>
 
-@foreach($student as $student)
-<table>
-    <thead>
-    Студенты
-    </thead>
-    <tbody>
-    <?php echo $student['Имя'] ?>
-    </tbody>
-</table>
 
-@endforeach
+<script src="{{mix('js/app.js')}}"></script>
 </body>
 </html>

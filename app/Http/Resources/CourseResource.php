@@ -17,7 +17,14 @@ class CourseResource extends JsonResource
         return[
             'id'=>$this->id,
             'Название'=>$this->Название,
+            'Учитель'=>$this->teacher['Имя'],
             'Студенты'=>$this->student,
+
         ];
     }
+
+    public function allowed_course(){
+        return[];
+    }
+
 }

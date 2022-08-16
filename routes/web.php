@@ -2,9 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Models\Course;
+use App\Http\Controllers\VueController;
 
-use App\Models\Student;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +15,10 @@ use App\Models\Student;
 |
 */
 
-Route::get('/courses', function () {
-   $student =Student::all();
-   $course = Course::all();
+
+//Route::get('/courses', function () {
+
+  // $course = Course::all();
 
 
   // foreach ($student as $student){
@@ -27,26 +27,36 @@ Route::get('/courses', function () {
       // echo'-----------------'.'<br>';
   // }
 
-    foreach ($course as $course ){
-        echo 'course:'.$course['Название'].'<br>';
-        echo '<b>students:</b><br>';
-        foreach ($course->students as $student){
-            echo $student['Имя'].'<br>';
-        }
-        echo 'teacher:'.$course->teacher['Имя'].'<br>';
-        echo '------------------'.'<br>';
+    //foreach ($course as $course ){
+      //  echo 'course:'.$course['Название'].'<br>';
+        //echo '<b>students:</b><br>';
+        //foreach ($course->students as $student){
+          //  echo $student['Имя'].'<br>';
+        //}
+        //echo 'teacher:'.$course->teacher['Имя'].'<br>';
+        //echo '------------------'.'<br>';
 
-    }
-});
-Route::get('/students', function () {
-    $student = Student::all();
-    foreach ($student as $student){
-        echo'student:'.$student['Имя'].'<br>';
-        echo '<b>course:</b>'.$student->course['Название'].'<br>';
-        echo 'teacher:'.$student->course->teacher['Имя'].'<br>';
+  //  }
+//});
+//Route::get('/students', function () {
+  //  $student = Student::all();
+    //foreach ($student as $student){
 
-        echo '---------------'.'<br>';
-    }
+      //  echo'student:'.$student['Имя'].'<br>';
+        //echo '<b>course:</b>'.$student->course['Название'].'<br>';
+        //echo 'teacher:'.$student->course->teacher['Имя'].'<br>';
+        //echo'<form action="/destroy" method="post">  <button type="submit">Удалить</button></form>'.'<br>';
 
 
-});
+        //echo '---------------'.'<br>';
+    //}
+
+
+//});
+
+//Route::post('/destroy',[StudentController::class,'destroy'])->name('destroy');
+
+
+Route::get('/{any}',[VueController::class,'index'])->where('any','.*');
+
+

@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StudentStoreRequest;
+use App\Http\Resources\CourseResource;
+use App\Http\Resources\EnrollmentResource;
 use App\Http\Resources\StudentResource;
+use App\Models\Course;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -42,7 +45,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        return new StudentResource(Student::findOrFail($id));
+        return new EnrollmentResource(Student::findOrFail($id));
+
     }
 
     /**
@@ -54,9 +58,11 @@ class StudentController extends Controller
      */
     public function update(StudentStoreRequest $request, Student $student)
     {
+
         $student->update($request->validated());
 
         return new StudentResource($student);
+
     }
 
     /**
@@ -69,6 +75,23 @@ class StudentController extends Controller
     {
         $student->delete();
 
+
         return response(null,Response::HTTP_NO_CONTENT);
     }
+
+
+    public function allowedcourse($id){
+
+
+        return CourseResource::collection(Course::all());
+    }
+
+
+    public function listnedcourse($id){
+        return StudentResource::collection(Student::all('course_id'));
+    }
+
+
+
+
 }

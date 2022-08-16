@@ -19,8 +19,11 @@ class StudentResource extends JsonResource
             'id'=>$this->id,
             'Имя'=>$this->Имя,
             'Телефон'=>$this->Телефон,
-            'course'=>$this->course['Название'],
-            'teacher'=>$this->course->teacher['Имя'],
+            'Адрес'=>$this->Адрес,
+            'id курса'=>$this->course['id'],
+            'Название курса'=>$this->course['Название'],
+            'Номер курса'=>$this->course['Номер'],
+            'Учитель'=>$this->course->teacher['Имя'],
         ];
     }
 }

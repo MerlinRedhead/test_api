@@ -29,7 +29,7 @@ class StudentStoreRequest extends FormRequest
             'Телефон'=>'max:255',
             'Номер_зачетки'=>'max:255',
             'Средняя_успеваемость'=>'max:255',
-            'course_id'=>'max:255'
+
         ];
     }
 }

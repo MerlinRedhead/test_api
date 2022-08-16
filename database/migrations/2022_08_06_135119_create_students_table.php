@@ -20,8 +20,11 @@ return new class extends Migration
             $table->string('Телефон');
             $table->integer('Номер_зачетки');
             $table->float('Средняя_успеваемость');
+            $table->integer('Оценки')->nullable();
+            $table->integer('Финальная_оценка')->nullable();
             $table->foreignId('course_id')->constrained();
             $table->timestamps();
+
         });
     }
 

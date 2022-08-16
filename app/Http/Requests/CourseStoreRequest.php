@@ -23,10 +23,6 @@ class CourseStoreRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'Название'=>'max:255',
-            'Номер'=>'max:255',
-            'Стоимость'=>'max:255'
-        ];
+
     }
 }

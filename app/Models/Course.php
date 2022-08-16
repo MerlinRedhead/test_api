@@ -9,9 +9,10 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['Название','Номер','Стоимость'];
 
-public function Teacher(){
+    protected $fillable = ['Название','Номер','Стоимость',];
+
+public function teacher(){
     return $this->hasOne(Teacher::class);
 }
 

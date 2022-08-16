@@ -51,9 +51,11 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TeacherStoreRequest $request, Teacher $teacher)
     {
+        $teacher->update($request->validated());
 
+        return new TeacherResource($teacher);
     }
 
     /**

@@ -4,9 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseStoreRequest;
+use App\Http\Requests\StudentStoreRequest;
 use App\Http\Resources\CourseResource;
+use App\Http\Resources\StudentResource;
 use App\Models\Course;
 use Illuminate\Http\Request;
+
+use App\Models\Student;
+use Illuminate\Http\Response;
 
 class CourseController extends Controller
 {
@@ -42,7 +47,7 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        return new CourseResource(Course::with('student')->findOrFail($id));
+        return new CourseResource(Course::findOrFail($id));
     }
 
     /**
@@ -52,7 +57,7 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CourseStoreRequest $request, $id)
+    public function update(CourseStoreRequest $request, Course $id)
     {
         $updated_course = Course::update($request->validated($id));
 
@@ -65,8 +70,16 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Student $student)
     {
-        //
+        $student->delete();
+
+        return response(null,Response::HTTP_NO_CONTENT);
+    }
+
+    public function new(StudentStoreRequest $request){
+        $created_student = Student::create($request->validated());
+
+        return new StudentResource($created_student);
     }
 }
